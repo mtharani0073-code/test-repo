@@ -3,38 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My First Project</title>
+    <title>My Professional Portfolio</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-wrap: wrap;
+            gap: 30px;
         }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
         .container {
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
             background: white;
+            margin: 40px 0;
             padding: 50px;
             border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
-        h1 {
-            color: #333;
-            margin: 0;
+
+        section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 15px;
         }
-        p {
-            color: #666;
-            margin-top: 10px;
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-content p {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            opacity: 0.9;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card-content {
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Full Stack Developer | Tech Enthusiast</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>Welcome to My First Project</h1>
-        <p>This is my first GitHub repository and webpage!</p>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p>
+                        Hello! I'm a passionate developer with a strong interest in creating beautiful and functional web applications. 
+                        With expertise in modern web technologies, I strive to deliver high-quality solutions that exceed expectations.
+                    </p>
+                    <p>
+                        I believe in continuous learning and staying updated with the latest industry trends. 
+                        My journey in development has taught me the importance of clean code, user experience, and collaborative teamwork.
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
+                        or sharing knowledge with the developer community.
+                    </p>
+                    <p>
+                        I'm always open to exciting opportunities and collaborations. Let's build something amazing together!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Vue.js</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend Development</h3>
+                    <p>Node.js, Python, Django, Express</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Databases</h3>
+                    <p>MySQL, MongoDB, PostgreSQL</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Technologies</h3>
+                    <p>Git, Docker, AWS, GitHub</p>
+                </div>
+                <div class="skill-card">
+                    <h3>UI/UX Design</h3>
+                    <p>Figma, Design Systems, Responsive Design</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Agile & Collaboration</h3>
+                    <p>Scrum, Team Leadership, Problem Solving</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>
+                            A full-stack e-commerce application with user authentication, product catalog, 
+                            shopping cart, and payment integration.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Task Management App</h3>
+                        <p>
+                            A collaborative task management tool with real-time updates, team collaboration features, 
+                            and progress tracking capabilities.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Weather Dashboard</h3>
+                        <p>
+                            A responsive weather application that fetches real-time weather data and provides 
+                            detailed forecasts with an intuitive user interface.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API Integration</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">Email Me</a>
+                    <a href="https://linkedin.com" target="_blank" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com" target="_blank" class="contact-link">GitHub</a>
+                    <a href="https://twitter.com" target="_blank" class="contact-link">Twitter</a>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <footer>
+        <p>&copy; 2026 My Professional Portfolio. All rights reserved.</p>
+    </footer>
 </body>
 </html>
